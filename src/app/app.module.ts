@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
@@ -11,6 +12,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SectionHeaderComponent } from './shared/section-header/section-header.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { SectionHeaderComponent } from './shared/section-header/section-header.c
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
