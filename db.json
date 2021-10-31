@@ -8,8 +8,7 @@
       "start": "2021-03-01T23:00:00.000Z",
       "end": "2021-04-14T22:00:00.000Z",
       "priority": "medium",
-      "done": true,
-      "task": []
+      "done": true
     },
     {
       "id": 2,
@@ -17,10 +16,14 @@
       "name": "Progetto Beta",
       "description": "Lorem ipsum dolor sit amet.",
       "start": "2019-04-29T22:00:00.000Z",
-      "end": "2019-07-14T22:00:00.000Z",
+      "end": "2021-12-12",
       "priority": "low",
       "done": true,
-      "task": []
+      "tasks": [
+        {
+          "name": "Primo task"
+        }
+      ]
     },
     {
       "id": 3,
@@ -30,17 +33,27 @@
       "start": "2019-09-14T22:00:00.000Z",
       "priority": "low",
       "done": false,
-      "task": []
+      "end": "2021-11-10",
+      "tasks": [
+        {
+          "name": "Primo task"
+        }
+      ]
     },
     {
       "name": "Test progetto",
       "priority": "medium",
       "start": "2021-10-01",
-      "description": "Prov test add progetto",
+      "description": "Prova test add tasks",
       "code": "o3c0gi3",
       "done": false,
-      "task": [],
-      "id": 4
+      "id": 4,
+      "end": "2021-11-03",
+      "tasks": [
+        {
+          "name": "Terzo task"
+        }
+      ]
     }
   ],
   "tasks": []

@@ -8,19 +8,25 @@ import { ProjectService } from '../../project.service';
 @Component({
   selector: 'ngprj-project-detail',
   templateUrl: './project-detail.component.html',
-  styleUrls: ['./project-detail.component.css']
+  styleUrls: ['./project-detail.component.css'],
 })
 export class ProjectDetailComponent implements OnInit {
   @Input() project$!: Observable<Project>;
 
   constructor(
     private projectService: ProjectService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.project$ = this.activatedRoute.paramMap.pipe(
-      switchMap((params: ParamMap) => this.projectService.get(+params.get('id')!))
-    )
-    }
+      switchMap((params: ParamMap) =>
+        this.projectService.get(+params.get('id')!)
+      )
+    );
   }
 
+  public updateProject(project: Project, id: number) {
+    this.projectService.update(project, id).subscribe();
+  }
+}

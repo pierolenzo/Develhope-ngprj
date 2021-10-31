@@ -11,5 +11,5 @@ export interface Project {
   end?: Date;
   done: boolean;
   priority: priority;
-  task: Task[];
+  tasks: Task[];
 }

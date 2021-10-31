@@ -14,8 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer 1234567890`
       }
     })
-    return next.handle(request).pipe(
-      tap(res => console.log(res))
-    );
+    return next.handle(request);
   }
 }

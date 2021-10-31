@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Project } from '@app/models/Project';
 import { LogService } from '@app/services/log.service';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { catchError, retry, tap } from 'rxjs/operators';
 export class ProjectService {
   constructor(private httpClient: HttpClient, private logService: LogService) {}
 
-  getAll(): Observable<Project[]> {
+  public getAll(): Observable<Project[]> {
     return this.httpClient
       .get<Project[]>('http://localhost:3000/projects')
       .pipe(
@@ -21,7 +21,7 @@ export class ProjectService {
     );
   }
 
-  add(project: Project): Observable<Project> {
+  public add(project: Project): Observable<Project> {
     const projectToAdd = {
       ...project,
       code: Math.random().toString(36).replace('0.', '').substring(2, 9),
@@ -36,7 +36,17 @@ export class ProjectService {
     );
   }
 
-  get(id: number): Observable<Project> {
+  public update(project: Project, id: number) {
+    return this.httpClient.patch<Project>(`http://localhost:3000/projects/${id}`, project)
+      .pipe(
+        tap(data => this.logService.log(`Update eseguito ${data}`)),
+        retry(3),
+        catchError(this.handleError)
+      )
+
+  }
+
+  public get(id: number): Observable<Project> {
     return this.httpClient
       .get<Project>(`http:///localhost:3000/projects/${id}`)
       .pipe(tap((data) => this.logService.log(`get Eseguito ${data}`)),
